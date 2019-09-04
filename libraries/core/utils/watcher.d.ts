@@ -1,0 +1,13 @@
+export declare const FIRST_TIME_WATCH: {};
+export declare const isFirstTimeChange: (v: any) => boolean;
+export declare const debounce: (fn: Function, wait?: number) => (...args: any[]) => void;
+export declare const muteWatchers: () => void;
+export declare const unMuteWatchers: () => void;
+export declare const $watch: (expr: any, $scope: any, $locals: any, listener: any, identifier?: string, doNotClone?: boolean) => () => boolean;
+export declare const $unwatch: (identifier: any) => boolean;
+export declare const setNgZone: (zone: any) => any;
+export declare const setAppRef: (appRef: any) => void;
+export declare const isChangeFromWatch: () => boolean;
+export declare const resetChangeFromWatch: () => boolean;
+export declare const $invokeWatchers: (force?: boolean, ignoreMuted?: boolean) => void;
+export declare let $appDigest: (force?: boolean) => void;

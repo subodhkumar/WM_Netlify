@@ -1,0 +1,34 @@
+import { Component, Injector } from '@angular/core';
+import { APPLY_STYLES_TYPE, provideAsWidgetRef, StylableComponent, styler } from '@wm/components';
+import { registerProps } from './widget-template.props';
+const DEFAULT_CLS = 'app-widget-template';
+const WIDGET_CONFIG = { widgetType: 'wm-widget-template', hostClass: DEFAULT_CLS };
+export class WidgetTemplateComponent extends StylableComponent {
+    constructor(inj) {
+        super(inj, WIDGET_CONFIG);
+        styler(this.nativeElement, this, APPLY_STYLES_TYPE.SCROLLABLE_CONTAINER);
+    }
+    onPropertyChange(key, nv, ov) {
+        if (key === 'tabindex') {
+            return;
+        }
+        else {
+            super.onPropertyChange(key, nv, ov);
+        }
+    }
+}
+WidgetTemplateComponent.initializeProps = registerProps();
+WidgetTemplateComponent.decorators = [
+    { type: Component, args: [{
+                selector: '[wmWidgetTemplate]',
+                template: "<span>Widget Template</span>",
+                providers: [
+                    provideAsWidgetRef(WidgetTemplateComponent)
+                ]
+            }] }
+];
+/** @nocollapse */
+WidgetTemplateComponent.ctorParameters = () => [
+    { type: Injector }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoid2lkZ2V0LXRlbXBsYXRlLmNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0B3bS9tb2JpbGUvY29tcG9uZW50cy8iLCJzb3VyY2VzIjpbIndpZGdldHMvd2lkZ2V0LXRlbXBsYXRlL3dpZGdldC10ZW1wbGF0ZS5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFNBQVMsRUFBRSxRQUFRLEVBQUUsTUFBTSxlQUFlLENBQUM7QUFFcEQsT0FBTyxFQUFFLGlCQUFpQixFQUFpQixrQkFBa0IsRUFBRSxpQkFBaUIsRUFBRSxNQUFNLEVBQUUsTUFBTSxnQkFBZ0IsQ0FBQztBQUVqSCxPQUFPLEVBQUUsYUFBYSxFQUFFLE1BQU0seUJBQXlCLENBQUM7QUFFeEQsTUFBTSxXQUFXLEdBQUcscUJBQXFCLENBQUM7QUFDMUMsTUFBTSxhQUFhLEdBQWtCLEVBQUMsVUFBVSxFQUFFLG9CQUFvQixFQUFFLFNBQVMsRUFBRSxXQUFXLEVBQUMsQ0FBQztBQVNoRyxNQUFNLE9BQU8sdUJBQXdCLFNBQVEsaUJBQWlCO0lBRzFELFlBQVksR0FBYTtRQUNyQixLQUFLLENBQUMsR0FBRyxFQUFFLGFBQWEsQ0FBQyxDQUFDO1FBQzFCLE1BQU0sQ0FBQyxJQUFJLENBQUMsYUFBYSxFQUFFLElBQUksRUFBRSxpQkFBaUIsQ0FBQyxvQkFBb0IsQ0FBQyxDQUFDO0lBQzdFLENBQUM7SUFFTSxnQkFBZ0IsQ0FBQyxHQUFHLEVBQUUsRUFBRSxFQUFFLEVBQUc7UUFDaEMsSUFBSSxHQUFHLEtBQUssVUFBVSxFQUFFO1lBQ3BCLE9BQU87U0FDVjthQUFNO1lBQ0gsS0FBSyxDQUFDLGdCQUFnQixDQUFDLEdBQUcsRUFBRSxFQUFFLEVBQUUsRUFBRSxDQUFDLENBQUM7U0FDdkM7SUFDTCxDQUFDOztBQWJNLHVDQUFlLEdBQUcsYUFBYSxFQUFFLENBQUM7O1lBUjVDLFNBQVMsU0FBQztnQkFDUCxRQUFRLEVBQUUsb0JBQW9CO2dCQUM5Qix3Q0FBK0M7Z0JBQy9DLFNBQVMsRUFBRTtvQkFDUCxrQkFBa0IsQ0FBQyx1QkFBdUIsQ0FBQztpQkFDOUM7YUFDSjs7OztZQWZtQixRQUFRIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgQ29tcG9uZW50LCBJbmplY3RvciB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG5pbXBvcnQgeyBBUFBMWV9TVFlMRVNfVFlQRSwgSVdpZGdldENvbmZpZywgcHJvdmlkZUFzV2lkZ2V0UmVmLCBTdHlsYWJsZUNvbXBvbmVudCwgc3R5bGVyIH0gZnJvbSAnQHdtL2NvbXBvbmVudHMnO1xuXG5pbXBvcnQgeyByZWdpc3RlclByb3BzIH0gZnJvbSAnLi93aWRnZXQtdGVtcGxhdGUucHJvcHMnO1xuXG5jb25zdCBERUZBVUxUX0NMUyA9ICdhcHAtd2lkZ2V0LXRlbXBsYXRlJztcbmNvbnN0IFdJREdFVF9DT05GSUc6IElXaWRnZXRDb25maWcgPSB7d2lkZ2V0VHlwZTogJ3dtLXdpZGdldC10ZW1wbGF0ZScsIGhvc3RDbGFzczogREVGQVVMVF9DTFN9O1xuXG5AQ29tcG9uZW50KHtcbiAgICBzZWxlY3RvcjogJ1t3bVdpZGdldFRlbXBsYXRlXScsXG4gICAgdGVtcGxhdGVVcmw6ICcuL3dpZGdldC10ZW1wbGF0ZS5jb21wb25lbnQuaHRtbCcsXG4gICAgcHJvdmlkZXJzOiBbXG4gICAgICAgIHByb3ZpZGVBc1dpZGdldFJlZihXaWRnZXRUZW1wbGF0ZUNvbXBvbmVudClcbiAgICBdXG59KVxuZXhwb3J0IGNsYXNzIFdpZGdldFRlbXBsYXRlQ29tcG9uZW50IGV4dGVuZHMgU3R5bGFibGVDb21wb25lbnQge1xuICAgIHN0YXRpYyBpbml0aWFsaXplUHJvcHMgPSByZWdpc3RlclByb3BzKCk7XG5cbiAgICBjb25zdHJ1Y3Rvcihpbmo6IEluamVjdG9yKSB7XG4gICAgICAgIHN1cGVyKGluaiwgV0lER0VUX0NPTkZJRyk7XG4gICAgICAgIHN0eWxlcih0aGlzLm5hdGl2ZUVsZW1lbnQsIHRoaXMsIEFQUExZX1NUWUxFU19UWVBFLlNDUk9MTEFCTEVfQ09OVEFJTkVSKTtcbiAgICB9XG5cbiAgICBwdWJsaWMgb25Qcm9wZXJ0eUNoYW5nZShrZXksIG52LCBvdj8pIHtcbiAgICAgICAgaWYgKGtleSA9PT0gJ3RhYmluZGV4Jykge1xuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9IGVsc2Uge1xuICAgICAgICAgICAgc3VwZXIub25Qcm9wZXJ0eUNoYW5nZShrZXksIG52LCBvdik7XG4gICAgICAgIH1cbiAgICB9XG59XG4iXX0=

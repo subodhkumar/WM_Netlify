@@ -1,0 +1,10 @@
+import { getAttrMarkup, register } from '@wm/transpiler';
+var tagName = 'p';
+register('wm-message', function () {
+    return {
+        pre: function (attrs) { return "<" + tagName + " wmMessage aria-label=\"Notification Alerts\" " + getAttrMarkup(attrs) + ">"; },
+        post: function () { return "</" + tagName + ">"; }
+    };
+});
+export default (function () { });
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibWVzc2FnZS5idWlsZC5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0B3bS9jb21wb25lbnRzLyIsInNvdXJjZXMiOlsid2lkZ2V0cy9jb21tb24vbWVzc2FnZS9tZXNzYWdlLmJ1aWxkLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxhQUFhLEVBQWlCLFFBQVEsRUFBRSxNQUFNLGdCQUFnQixDQUFDO0FBRXhFLElBQU0sT0FBTyxHQUFHLEdBQUcsQ0FBQztBQUVwQixRQUFRLENBQUMsWUFBWSxFQUFFO0lBQ25CLE9BQU87UUFDSCxHQUFHLEVBQUUsVUFBQSxLQUFLLElBQUksT0FBQSxNQUFJLE9BQU8sc0RBQStDLGFBQWEsQ0FBQyxLQUFLLENBQUMsTUFBRyxFQUFqRixDQUFpRjtRQUMvRixJQUFJLEVBQUUsY0FBTSxPQUFBLE9BQUssT0FBTyxNQUFHLEVBQWYsQ0FBZTtLQUM5QixDQUFDO0FBQ04sQ0FBQyxDQUFDLENBQUM7QUFFSCxnQkFBZSxjQUFPLENBQUMsRUFBQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGdldEF0dHJNYXJrdXAsIElCdWlsZFRhc2tEZWYsIHJlZ2lzdGVyIH0gZnJvbSAnQHdtL3RyYW5zcGlsZXInO1xuXG5jb25zdCB0YWdOYW1lID0gJ3AnO1xuXG5yZWdpc3Rlcignd20tbWVzc2FnZScsICgpOiBJQnVpbGRUYXNrRGVmID0+IHtcbiAgICByZXR1cm4ge1xuICAgICAgICBwcmU6IGF0dHJzID0+IGA8JHt0YWdOYW1lfSB3bU1lc3NhZ2UgYXJpYS1sYWJlbD1cIk5vdGlmaWNhdGlvbiBBbGVydHNcIiAke2dldEF0dHJNYXJrdXAoYXR0cnMpfT5gLFxuICAgICAgICBwb3N0OiAoKSA9PiBgPC8ke3RhZ05hbWV9PmBcbiAgICB9O1xufSk7XG5cbmV4cG9ydCBkZWZhdWx0ICgpID0+IHt9O1xuIl19

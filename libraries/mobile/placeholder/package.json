@@ -1,0 +1,21 @@
+{
+  "name": "@wm/mobile/placeholder",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.0.0",
+    "@angular/core": "^7.0.0"
+  },
+  "main": "bundles/index.umd.js",
+  "module": "fesm5/index.js",
+  "es2015": "fesm2015/index.js",
+  "esm5": "esm5/index.js",
+  "esm2015": "esm2015/index.js",
+  "fesm5": "fesm5/index.js",
+  "fesm2015": "fesm2015/index.js",
+  "typings": "index.d.ts",
+  "metadata": "index.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}

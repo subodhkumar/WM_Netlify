@@ -1,0 +1,10 @@
+import { getAttrMarkup, register } from '@wm/transpiler';
+const tagName = 'aside';
+register('wm-right-panel', () => {
+    return {
+        pre: attrs => `<${tagName} wmRightPanel partialContainer data-role="page-right-panel" role="complementary" ${getAttrMarkup(attrs)}>`,
+        post: () => `</${tagName}>`
+    };
+});
+export default () => { };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicmlnaHQtcGFuZWwuYnVpbGQuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9Ad20vY29tcG9uZW50cy8iLCJzb3VyY2VzIjpbIndpZGdldHMvY29tbW9uL3JpZ2h0LXBhbmVsL3JpZ2h0LXBhbmVsLmJ1aWxkLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxhQUFhLEVBQWlCLFFBQVEsRUFBRSxNQUFNLGdCQUFnQixDQUFDO0FBRXhFLE1BQU0sT0FBTyxHQUFHLE9BQU8sQ0FBQztBQUV4QixRQUFRLENBQUMsZ0JBQWdCLEVBQUUsR0FBa0IsRUFBRTtJQUMzQyxPQUFPO1FBQ0gsR0FBRyxFQUFFLEtBQUssQ0FBQyxFQUFFLENBQUMsSUFBSSxPQUFPLG9GQUFvRixhQUFhLENBQUMsS0FBSyxDQUFDLEdBQUc7UUFDcEksSUFBSSxFQUFFLEdBQUcsRUFBRSxDQUFDLEtBQUssT0FBTyxHQUFHO0tBQzlCLENBQUM7QUFDTixDQUFDLENBQUMsQ0FBQztBQUVILGVBQWUsR0FBRyxFQUFFLEdBQUUsQ0FBQyxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgZ2V0QXR0ck1hcmt1cCwgSUJ1aWxkVGFza0RlZiwgcmVnaXN0ZXIgfSBmcm9tICdAd20vdHJhbnNwaWxlcic7XG5cbmNvbnN0IHRhZ05hbWUgPSAnYXNpZGUnO1xuXG5yZWdpc3Rlcignd20tcmlnaHQtcGFuZWwnLCAoKTogSUJ1aWxkVGFza0RlZiA9PiB7XG4gICAgcmV0dXJuIHtcbiAgICAgICAgcHJlOiBhdHRycyA9PiBgPCR7dGFnTmFtZX0gd21SaWdodFBhbmVsIHBhcnRpYWxDb250YWluZXIgZGF0YS1yb2xlPVwicGFnZS1yaWdodC1wYW5lbFwiIHJvbGU9XCJjb21wbGVtZW50YXJ5XCIgJHtnZXRBdHRyTWFya3VwKGF0dHJzKX0+YCxcbiAgICAgICAgcG9zdDogKCkgPT4gYDwvJHt0YWdOYW1lfT5gXG4gICAgfTtcbn0pO1xuXG5leHBvcnQgZGVmYXVsdCAoKSA9PiB7fTtcbiJdfQ==

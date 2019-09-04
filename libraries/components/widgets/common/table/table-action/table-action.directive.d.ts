@@ -1,0 +1,31 @@
+import { Injector, OnInit } from '@angular/core';
+import { BaseComponent } from '../../base/base.component';
+import { TableComponent } from '../table.component';
+export declare class TableActionDirective extends BaseComponent implements OnInit {
+    table: TableComponent;
+    static initializeProps: void;
+    accessroles: any;
+    action: any;
+    caption: any;
+    class: any;
+    disabled: any;
+    displayName: any;
+    icon: any;
+    iconclass: any;
+    position: any;
+    shortcutkey: any;
+    show: any;
+    tabindex: any;
+    title: any;
+    key: any;
+    hyperlink: any;
+    target: any;
+    buttonDef: any;
+    conditionalclass: any;
+    conditionalstyle: any;
+    private _propsInitialized;
+    constructor(inj: Injector, table: TableComponent);
+    populateAction(): void;
+    ngOnInit(): void;
+    onPropertyChange(key: any, nv: any): void;
+}

@@ -1,0 +1,34 @@
+import { AfterViewInit, ElementRef, Injector, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { App } from '@wm/core';
+import { ListComponent } from './list.component';
+export declare class ListItemDirective implements OnInit, AfterViewInit {
+    private inj;
+    private app;
+    item: any;
+    context: any;
+    destroy: Subject<any>;
+    destroy$: Observable<any>;
+    nativeElement: HTMLElement;
+    readonly listComponent: ListComponent;
+    private itemClass;
+    private _currentItemWidgets;
+    isActive: boolean;
+    disableItem: boolean;
+    onFocus(): void;
+    readonly $index: any;
+    readonly $even: any;
+    readonly $odd: any;
+    readonly $first: any;
+    readonly $last: any;
+    readonly currentItemWidgets: {};
+    wmListItem: any;
+    constructor(inj: Injector, elRef: ElementRef, app: App);
+    private registerWatch;
+    private itemClassWatcher;
+    private disableItemWatcher;
+    private triggerWMEvent;
+    private setUpCUDHandlers;
+    ngOnInit(): void;
+    ngAfterViewInit(): void;
+}

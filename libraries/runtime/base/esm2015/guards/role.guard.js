@@ -1,0 +1,47 @@
+import { Injectable } from '@angular/core';
+import { AbstractToasterService, App } from '@wm/core';
+import { SecurityService } from '@wm/security';
+import { AuthGuard } from './auth.guard';
+import { AppManagerService } from '../services/app.manager.service';
+export class RoleGuard {
+    constructor(securityService, authGuard, toasterService, app, appManager) {
+        this.securityService = securityService;
+        this.authGuard = authGuard;
+        this.toasterService = toasterService;
+        this.app = app;
+        this.appManager = appManager;
+    }
+    canActivate(route) {
+        const allowedRoles = route.data.allowedRoles;
+        return this.authGuard.isAuthenticated()
+            .then((isLoggedIn) => {
+            if (isLoggedIn) {
+                const userRoles = this.securityService.get().userInfo.userRoles;
+                const hasAccess = _.intersection(allowedRoles, userRoles).length > 0;
+                if (hasAccess) {
+                    return Promise.resolve(true);
+                }
+                // current loggedin user doesn't have access to the page that the user is trying to view
+                this.appManager.notifyApp(this.app.appLocale.LABEL_ACCESS_DENIED || 'Access Denied', 'error');
+                return Promise.resolve(false);
+            }
+            else {
+                // redirect to Login
+                this.appManager.handle401(route.routeConfig.path);
+                return Promise.resolve(false);
+            }
+        });
+    }
+}
+RoleGuard.decorators = [
+    { type: Injectable }
+];
+/** @nocollapse */
+RoleGuard.ctorParameters = () => [
+    { type: SecurityService },
+    { type: AuthGuard },
+    { type: AbstractToasterService },
+    { type: App },
+    { type: AppManagerService }
+];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicm9sZS5ndWFyZC5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0B3bS9ydW50aW1lL2Jhc2UvIiwic291cmNlcyI6WyJndWFyZHMvcm9sZS5ndWFyZC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQUUsVUFBVSxFQUFFLE1BQU0sZUFBZSxDQUFDO0FBRzNDLE9BQU8sRUFBRSxzQkFBc0IsRUFBRSxHQUFHLEVBQUUsTUFBTSxVQUFVLENBQUM7QUFDdkQsT0FBTyxFQUFFLGVBQWUsRUFBRSxNQUFNLGNBQWMsQ0FBQztBQUUvQyxPQUFPLEVBQUUsU0FBUyxFQUFFLE1BQU0sY0FBYyxDQUFDO0FBQ3pDLE9BQU8sRUFBRSxpQkFBaUIsRUFBRSxNQUFNLGlDQUFpQyxDQUFDO0FBS3BFLE1BQU0sT0FBTyxTQUFTO0lBRWxCLFlBQ1ksZUFBZ0MsRUFDaEMsU0FBb0IsRUFDcEIsY0FBc0MsRUFDdEMsR0FBUSxFQUNSLFVBQTZCO1FBSjdCLG9CQUFlLEdBQWYsZUFBZSxDQUFpQjtRQUNoQyxjQUFTLEdBQVQsU0FBUyxDQUFXO1FBQ3BCLG1CQUFjLEdBQWQsY0FBYyxDQUF3QjtRQUN0QyxRQUFHLEdBQUgsR0FBRyxDQUFLO1FBQ1IsZUFBVSxHQUFWLFVBQVUsQ0FBbUI7SUFDdEMsQ0FBQztJQUVKLFdBQVcsQ0FBQyxLQUE2QjtRQUNyQyxNQUFNLFlBQVksR0FBRyxLQUFLLENBQUMsSUFBSSxDQUFDLFlBQVksQ0FBQztRQUU3QyxPQUFPLElBQUksQ0FBQyxTQUFTLENBQUMsZUFBZSxFQUFFO2FBQ2xDLElBQUksQ0FBQyxDQUFDLFVBQW1CLEVBQUUsRUFBRTtZQUMxQixJQUFJLFVBQVUsRUFBRTtnQkFDWixNQUFNLFNBQVMsR0FBRyxJQUFJLENBQUMsZUFBZSxDQUFDLEdBQUcsRUFBRSxDQUFDLFFBQVEsQ0FBQyxTQUFTLENBQUM7Z0JBQ2hFLE1BQU0sU0FBUyxHQUFHLENBQUMsQ0FBQyxZQUFZLENBQUMsWUFBWSxFQUFFLFNBQVMsQ0FBQyxDQUFDLE1BQU0sR0FBRyxDQUFDLENBQUM7Z0JBRXJFLElBQUksU0FBUyxFQUFFO29CQUNYLE9BQU8sT0FBTyxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsQ0FBQztpQkFDaEM7Z0JBRUQsd0ZBQXdGO2dCQUN4RixJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FDckIsSUFBSSxDQUFDLEdBQUcsQ0FBQyxTQUFTLENBQUMsbUJBQW1CLElBQUksZUFBZSxFQUN6RCxPQUFPLENBQ1YsQ0FBQztnQkFFRixPQUFPLE9BQU8sQ0FBQyxPQUFPLENBQUMsS0FBSyxDQUFDLENBQUM7YUFFakM7aUJBQU07Z0JBQ0gsb0JBQW9CO2dCQUNwQixJQUFJLENBQUMsVUFBVSxDQUFDLFNBQVMsQ0FBQyxLQUFLLENBQUMsV0FBVyxDQUFDLElBQUksQ0FBQyxDQUFDO2dCQUVsRCxPQUFPLE9BQU8sQ0FBQyxPQUFPLENBQUMsS0FBSyxDQUFDLENBQUM7YUFDakM7UUFDTCxDQUFDLENBQUMsQ0FBQztJQUNYLENBQUM7OztZQXZDSixVQUFVOzs7O1lBUEYsZUFBZTtZQUVmLFNBQVM7WUFIVCxzQkFBc0I7WUFBRSxHQUFHO1lBSTNCLGlCQUFpQiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEluamVjdGFibGUgfSBmcm9tICdAYW5ndWxhci9jb3JlJztcbmltcG9ydCB7IEFjdGl2YXRlZFJvdXRlU25hcHNob3QsIENhbkFjdGl2YXRlIH0gZnJvbSAnQGFuZ3VsYXIvcm91dGVyJztcblxuaW1wb3J0IHsgQWJzdHJhY3RUb2FzdGVyU2VydmljZSwgQXBwIH0gZnJvbSAnQHdtL2NvcmUnO1xuaW1wb3J0IHsgU2VjdXJpdHlTZXJ2aWNlIH0gZnJvbSAnQHdtL3NlY3VyaXR5JztcblxuaW1wb3J0IHsgQXV0aEd1YXJkIH0gZnJvbSAnLi9hdXRoLmd1YXJkJztcbmltcG9ydCB7IEFwcE1hbmFnZXJTZXJ2aWNlIH0gZnJvbSAnLi4vc2VydmljZXMvYXBwLm1hbmFnZXIuc2VydmljZSc7XG5cbmRlY2xhcmUgY29uc3QgXzogYW55O1xuXG5ASW5qZWN0YWJsZSgpXG5leHBvcnQgY2xhc3MgUm9sZUd1YXJkIGltcGxlbWVudHMgQ2FuQWN0aXZhdGUge1xuXG4gICAgY29uc3RydWN0b3IoXG4gICAgICAgIHByaXZhdGUgc2VjdXJpdHlTZXJ2aWNlOiBTZWN1cml0eVNlcnZpY2UsXG4gICAgICAgIHByaXZhdGUgYXV0aEd1YXJkOiBBdXRoR3VhcmQsXG4gICAgICAgIHByaXZhdGUgdG9hc3RlclNlcnZpY2U6IEFic3RyYWN0VG9hc3RlclNlcnZpY2UsXG4gICAgICAgIHByaXZhdGUgYXBwOiBBcHAsXG4gICAgICAgIHByaXZhdGUgYXBwTWFuYWdlcjogQXBwTWFuYWdlclNlcnZpY2VcbiAgICApIHt9XG5cbiAgICBjYW5BY3RpdmF0ZShyb3V0ZTogQWN0aXZhdGVkUm91dGVTbmFwc2hvdCk6IFByb21pc2U8Ym9vbGVhbj4ge1xuICAgICAgICBjb25zdCBhbGxvd2VkUm9sZXMgPSByb3V0ZS5kYXRhLmFsbG93ZWRSb2xlcztcblxuICAgICAgICByZXR1cm4gdGhpcy5hdXRoR3VhcmQuaXNBdXRoZW50aWNhdGVkKClcbiAgICAgICAgICAgIC50aGVuKChpc0xvZ2dlZEluOiBib29sZWFuKSA9PiB7XG4gICAgICAgICAgICAgICAgaWYgKGlzTG9nZ2VkSW4pIHtcbiAgICAgICAgICAgICAgICAgICAgY29uc3QgdXNlclJvbGVzID0gdGhpcy5zZWN1cml0eVNlcnZpY2UuZ2V0KCkudXNlckluZm8udXNlclJvbGVzO1xuICAgICAgICAgICAgICAgICAgICBjb25zdCBoYXNBY2Nlc3MgPSBfLmludGVyc2VjdGlvbihhbGxvd2VkUm9sZXMsIHVzZXJSb2xlcykubGVuZ3RoID4gMDtcblxuICAgICAgICAgICAgICAgICAgICBpZiAoaGFzQWNjZXNzKSB7XG4gICAgICAgICAgICAgICAgICAgICAgICByZXR1cm4gUHJvbWlzZS5yZXNvbHZlKHRydWUpO1xuICAgICAgICAgICAgICAgICAgICB9XG5cbiAgICAgICAgICAgICAgICAgICAgLy8gY3VycmVudCBsb2dnZWRpbiB1c2VyIGRvZXNuJ3QgaGF2ZSBhY2Nlc3MgdG8gdGhlIHBhZ2UgdGhhdCB0aGUgdXNlciBpcyB0cnlpbmcgdG8gdmlld1xuICAgICAgICAgICAgICAgICAgICB0aGlzLmFwcE1hbmFnZXIubm90aWZ5QXBwKFxuICAgICAgICAgICAgICAgICAgICAgICAgdGhpcy5hcHAuYXBwTG9jYWxlLkxBQkVMX0FDQ0VTU19ERU5JRUQgfHwgJ0FjY2VzcyBEZW5pZWQnLFxuICAgICAgICAgICAgICAgICAgICAgICAgJ2Vycm9yJ1xuICAgICAgICAgICAgICAgICAgICApO1xuXG4gICAgICAgICAgICAgICAgICAgIHJldHVybiBQcm9taXNlLnJlc29sdmUoZmFsc2UpO1xuXG4gICAgICAgICAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgICAgICAgICAgLy8gcmVkaXJlY3QgdG8gTG9naW5cbiAgICAgICAgICAgICAgICAgICAgdGhpcy5hcHBNYW5hZ2VyLmhhbmRsZTQwMShyb3V0ZS5yb3V0ZUNvbmZpZy5wYXRoKTtcblxuICAgICAgICAgICAgICAgICAgICByZXR1cm4gUHJvbWlzZS5yZXNvbHZlKGZhbHNlKTtcbiAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICB9KTtcbiAgICB9XG59XG4iXX0=

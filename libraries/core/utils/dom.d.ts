@@ -1,0 +1,16 @@
+export declare const appendNode: (node: HTMLElement, parent: HTMLElement, sync?: boolean) => void;
+export declare const insertBefore: (node: HTMLElement, ref: HTMLElement, sync?: boolean) => void;
+export declare const insertAfter: (node: HTMLElement, ref: HTMLElement, sync?: boolean) => void;
+export declare const removeNode: (node: HTMLElement, sync?: boolean) => void;
+export declare const removeClass: (node: HTMLElement, ov: string, sync?: boolean) => void;
+export declare const addClass: (node: HTMLElement, nv: string, sync?: boolean) => void;
+export declare const switchClass: (node: HTMLElement, toAdd?: string, toRemove?: string, sync?: boolean) => void;
+export declare const toggleClass: (node: HTMLElement, cls: string, condition: boolean, sync?: boolean) => void;
+export declare const setCSS: (node: HTMLElement, cssName: string, val?: string | number, sync?: boolean) => void;
+export declare const setCSSFromObj: (node: HTMLElement, cssObj: any, sync?: boolean) => void;
+export declare const setProperty: (node: HTMLElement, propName: string, val: any, sync?: boolean) => void;
+export declare const setAttr: (node: HTMLElement, attrName: string, val: any, sync?: boolean) => void;
+export declare const setHtml: (node: HTMLElement, html: string, sync?: boolean) => void;
+export declare const removeAttr: (node: HTMLElement, attrName: string, sync?: boolean) => void;
+export declare const createElement: (nodeType: string, attrs: any, sync?: boolean) => HTMLElement;
+export declare const toDimension: (v: string | number) => string | number;

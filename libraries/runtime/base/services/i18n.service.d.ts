@@ -1,0 +1,34 @@
+import { HttpClient } from '@angular/common/http';
+import { BsLocaleService } from 'ngx-bootstrap';
+import { AbstractI18nService, AppDefaults } from '@wm/core';
+export declare class I18nServiceImpl extends AbstractI18nService {
+    private $http;
+    private bsLocaleService;
+    private appDefaults;
+    private selectedLocale;
+    private defaultSupportedLocale;
+    private readonly appLocale;
+    private readonly prefabLocale;
+    private messages;
+    private _isAngularLocaleLoaded;
+    constructor($http: HttpClient, bsLocaleService: BsLocaleService, appDefaults: AppDefaults);
+    private updateLocaleDirection;
+    private init;
+    getSelectedLocale(): string;
+    getDefaultSupportedLocale(): string;
+    getAppLocale(): any;
+    getPrefabLocaleBundle(prefabName: string): any;
+    private extendPrefabMessages;
+    private extendMessages;
+    private loadResource;
+    protected loadAppLocaleBundle(): void;
+    protected loadMomentLocaleBundle(momentLocale: any): void;
+    protected loadAngularLocaleBundle(angLocale: any): Promise<{}>;
+    protected loadCalendarLocaleBundle(calendarLocale: any): Promise<void>;
+    protected loadLocaleBundles(libLocale: any): Promise<{}>;
+    setSelectedLocale(locale: any): Promise<void>;
+    loadDefaultLocale(): Promise<void>;
+    getLocalizedMessage(message: any, ...args: any[]): any;
+    getAcceptedLanguages(): any;
+    isAngularLocaleLoaded(): boolean;
+}

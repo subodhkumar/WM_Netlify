@@ -1,0 +1,37 @@
+import { AfterContentInit, Injector, OnInit } from '@angular/core';
+import { MenuAdapterComponent } from '../base/menu-adapator.component';
+export declare class PanelComponent extends MenuAdapterComponent implements OnInit, AfterContentInit {
+    static initializeProps: void;
+    $lazyLoad: (...args: any[]) => void;
+    iconurl: string;
+    iconclass: string;
+    collapsible: boolean;
+    expanded: boolean;
+    enablefullscreen: boolean;
+    fullscreen: boolean;
+    title: string;
+    subheading: string;
+    actions: any;
+    helpClass: string;
+    helptext: string;
+    private fullScreenTitle;
+    private expandCollapseTitle;
+    private panelHeader;
+    private panelContent;
+    private panelBody;
+    reDrawableComponents: any;
+    private hasFooter;
+    readonly hideFooter: boolean;
+    readonly showHeader: any;
+    constructor(inj: Injector);
+    toggle($event: any): void;
+    expand($event: any): void;
+    collapse($event: any): void;
+    protected toggleFullScreen($event: any): void;
+    protected toggleHelp(): void;
+    protected close($event: any): void;
+    private computeDimensions;
+    private reDrawChildren;
+    onPropertyChange(key: string, nv: any, ov?: any): void;
+    ngAfterContentInit(): void;
+}

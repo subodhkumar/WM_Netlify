@@ -1,0 +1,31 @@
+import { AfterContentInit, ChangeDetectorRef, ElementRef, Injector } from '@angular/core';
+import { AbstractDialogService, App } from '@wm/core';
+import { TableComponent } from '../table/table.component';
+import { StylableComponent } from '../base/stylable.component';
+export declare class LiveTableComponent extends StylableComponent implements AfterContentInit {
+    private dialogService;
+    private app;
+    static initializeProps: void;
+    table: TableComponent;
+    form: any;
+    isLayoutDialog: boolean;
+    private dialogId;
+    private $queue;
+    private tableOptions;
+    constructor(inj: Injector, elRef: ElementRef, cdr: ChangeDetectorRef, dialogService: AbstractDialogService, app: App, layoutType: string, dialogId: string);
+    ngAfterContentInit(): void;
+    openDialog(): void;
+    closeDialog(): void;
+    focusFirstInput(): void;
+    onDialogOpen(): void;
+    setFormData(val: any): void;
+    private _addNewRow;
+    addNewRow(): void;
+    private _updateRow;
+    updateRow(row: any, eventName: any): void;
+    onSelectedItemChange(newValue: any): void;
+    onCancel(): void;
+    onResult(operation: any, response: any, newForm: any, updateMode: any): void;
+    showErrorMessage(): void;
+    onFormReady(form: any): void;
+}

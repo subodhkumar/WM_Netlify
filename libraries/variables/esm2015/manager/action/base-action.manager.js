@@ -1,0 +1,14 @@
+import { appManager, processBinding } from '../../util/variable/variables.utils';
+export class BaseActionManager {
+    initBinding(variable, bindSource, bindTarget) {
+        processBinding(variable, variable._context, bindSource, bindTarget);
+    }
+    notifyInflight(variable, status, data) {
+        appManager.notify('toggle-variable-state', {
+            variable: variable,
+            active: status,
+            data: data
+        });
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYmFzZS1hY3Rpb24ubWFuYWdlci5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0B3bS92YXJpYWJsZXMvIiwic291cmNlcyI6WyJtYW5hZ2VyL2FjdGlvbi9iYXNlLWFjdGlvbi5tYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxVQUFVLEVBQUUsY0FBYyxFQUFFLE1BQU0scUNBQXFDLENBQUM7QUFFakYsTUFBTSxPQUFnQixpQkFBaUI7SUFDbkMsV0FBVyxDQUFDLFFBQVEsRUFBRSxVQUFXLEVBQUUsVUFBVztRQUMxQyxjQUFjLENBQUMsUUFBUSxFQUFFLFFBQVEsQ0FBQyxRQUFRLEVBQUUsVUFBVSxFQUFFLFVBQVUsQ0FBQyxDQUFDO0lBQ3hFLENBQUM7SUFFRCxjQUFjLENBQUMsUUFBUSxFQUFFLE1BQWUsRUFBRSxJQUFVO1FBQ2hELFVBQVUsQ0FBQyxNQUFNLENBQUMsdUJBQXVCLEVBQUU7WUFDdkMsUUFBUSxFQUFFLFFBQVE7WUFDbEIsTUFBTSxFQUFFLE1BQU07WUFDZCxJQUFJLEVBQUUsSUFBSTtTQUNiLENBQUMsQ0FBQztJQUNQLENBQUM7Q0FDSiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IGFwcE1hbmFnZXIsIHByb2Nlc3NCaW5kaW5nIH0gZnJvbSAnLi4vLi4vdXRpbC92YXJpYWJsZS92YXJpYWJsZXMudXRpbHMnO1xuXG5leHBvcnQgYWJzdHJhY3QgY2xhc3MgQmFzZUFjdGlvbk1hbmFnZXIge1xuICAgIGluaXRCaW5kaW5nKHZhcmlhYmxlLCBiaW5kU291cmNlPywgYmluZFRhcmdldD8pIHtcbiAgICAgICAgcHJvY2Vzc0JpbmRpbmcodmFyaWFibGUsIHZhcmlhYmxlLl9jb250ZXh0LCBiaW5kU291cmNlLCBiaW5kVGFyZ2V0KTtcbiAgICB9XG5cbiAgICBub3RpZnlJbmZsaWdodCh2YXJpYWJsZSwgc3RhdHVzOiBib29sZWFuLCBkYXRhPzogYW55KSB7XG4gICAgICAgIGFwcE1hbmFnZXIubm90aWZ5KCd0b2dnbGUtdmFyaWFibGUtc3RhdGUnLCB7XG4gICAgICAgICAgICB2YXJpYWJsZTogdmFyaWFibGUsXG4gICAgICAgICAgICBhY3RpdmU6IHN0YXR1cyxcbiAgICAgICAgICAgIGRhdGE6IGRhdGFcbiAgICAgICAgfSk7XG4gICAgfVxufVxuIl19

@@ -1,0 +1,36 @@
+import { BaseVariableManager } from './base-variable.manager';
+const checkEmptyObject = (obj) => {
+    let isEmpty = true;
+    _.forEach(obj, (value) => {
+        if (_.isEmpty(value)) {
+            return;
+        }
+        if (!_.isObject(value)) {
+            isEmpty = false;
+        }
+        else if (_.isArray(value)) {
+            // If array, check if array is empty or if it has only one value and the value is empty
+            isEmpty = _.isEmpty(value) || (value.length === 1 ? _.isEmpty(value[0]) : false);
+        }
+        else {
+            // If object, loop over the object to check if it is empty or not
+            isEmpty = checkEmptyObject(value);
+        }
+        return isEmpty; // isEmpty false will break the loop
+    });
+    return isEmpty;
+};
+const ɵ0 = checkEmptyObject;
+export class ModelVariableManager extends BaseVariableManager {
+    /*
+    * Case: a LIST type static variable having only one object
+    * and the object has all fields empty, remove that object
+    */
+    removeFirstEmptyObject(variable) {
+        if (_.isArray(variable.dataSet) && variable.dataSet.length === 1 && checkEmptyObject(variable.dataSet[0])) {
+            variable.dataSet = [];
+        }
+    }
+}
+export { ɵ0 };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibW9kZWwtdmFyaWFibGUubWFuYWdlci5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0B3bS92YXJpYWJsZXMvIiwic291cmNlcyI6WyJtYW5hZ2VyL3ZhcmlhYmxlL21vZGVsLXZhcmlhYmxlLm1hbmFnZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLG1CQUFtQixFQUFFLE1BQU0seUJBQXlCLENBQUM7QUFJOUQsTUFBTSxnQkFBZ0IsR0FBRyxDQUFDLEdBQUcsRUFBRSxFQUFFO0lBQzdCLElBQUksT0FBTyxHQUFHLElBQUksQ0FBQztJQUNuQixDQUFDLENBQUMsT0FBTyxDQUFDLEdBQUcsRUFBRSxDQUFDLEtBQUssRUFBRSxFQUFFO1FBQ3JCLElBQUksQ0FBQyxDQUFDLE9BQU8sQ0FBQyxLQUFLLENBQUMsRUFBRTtZQUNwQixPQUFPO1NBQ1I7UUFDRCxJQUFJLENBQUMsQ0FBQyxDQUFDLFFBQVEsQ0FBQyxLQUFLLENBQUMsRUFBRTtZQUNwQixPQUFPLEdBQUcsS0FBSyxDQUFDO1NBQ25CO2FBQU0sSUFBSSxDQUFDLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxFQUFFO1lBQ3pCLHVGQUF1RjtZQUN2RixPQUFPLEdBQUcsQ0FBQyxDQUFDLE9BQU8sQ0FBQyxLQUFLLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxNQUFNLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsT0FBTyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxLQUFLLENBQUMsQ0FBQztTQUNwRjthQUFNO1lBQ0gsaUVBQWlFO1lBQ2pFLE9BQU8sR0FBRyxnQkFBZ0IsQ0FBQyxLQUFLLENBQUMsQ0FBQztTQUNyQztRQUNELE9BQU8sT0FBTyxDQUFDLENBQUMsb0NBQW9DO0lBQ3hELENBQUMsQ0FBQyxDQUFDO0lBQ0gsT0FBTyxPQUFPLENBQUM7QUFDbkIsQ0FBQyxDQUFDOztBQUVGLE1BQU0sT0FBTyxvQkFBcUIsU0FBUSxtQkFBbUI7SUFDekQ7OztNQUdFO0lBQ0Ysc0JBQXNCLENBQUMsUUFBUTtRQUMzQixJQUFJLENBQUMsQ0FBQyxPQUFPLENBQUMsUUFBUSxDQUFDLE9BQU8sQ0FBQyxJQUFJLFFBQVEsQ0FBQyxPQUFPLENBQUMsTUFBTSxLQUFLLENBQUMsSUFBSSxnQkFBZ0IsQ0FBQyxRQUFRLENBQUMsT0FBTyxDQUFDLENBQUMsQ0FBQyxDQUFDLEVBQUU7WUFDdkcsUUFBUSxDQUFDLE9BQU8sR0FBRyxFQUFFLENBQUM7U0FDekI7SUFDTCxDQUFDO0NBQ0oiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBCYXNlVmFyaWFibGVNYW5hZ2VyIH0gZnJvbSAnLi9iYXNlLXZhcmlhYmxlLm1hbmFnZXInO1xuXG5kZWNsYXJlIGNvbnN0IF87XG5cbmNvbnN0IGNoZWNrRW1wdHlPYmplY3QgPSAob2JqKSA9PiB7XG4gICAgbGV0IGlzRW1wdHkgPSB0cnVlO1xuICAgIF8uZm9yRWFjaChvYmosICh2YWx1ZSkgPT4ge1xuICAgICAgICBpZiAoXy5pc0VtcHR5KHZhbHVlKSkge1xuICAgICAgICAgIHJldHVybjtcbiAgICAgICAgfVxuICAgICAgICBpZiAoIV8uaXNPYmplY3QodmFsdWUpKSB7XG4gICAgICAgICAgICBpc0VtcHR5ID0gZmFsc2U7XG4gICAgICAgIH0gZWxzZSBpZiAoXy5pc0FycmF5KHZhbHVlKSkge1xuICAgICAgICAgICAgLy8gSWYgYXJyYXksIGNoZWNrIGlmIGFycmF5IGlzIGVtcHR5IG9yIGlmIGl0IGhhcyBvbmx5IG9uZSB2YWx1ZSBhbmQgdGhlIHZhbHVlIGlzIGVtcHR5XG4gICAgICAgICAgICBpc0VtcHR5ID0gXy5pc0VtcHR5KHZhbHVlKSB8fCAodmFsdWUubGVuZ3RoID09PSAxID8gXy5pc0VtcHR5KHZhbHVlWzBdKSA6IGZhbHNlKTtcbiAgICAgICAgfSBlbHNlIHtcbiAgICAgICAgICAgIC8vIElmIG9iamVjdCwgbG9vcCBvdmVyIHRoZSBvYmplY3QgdG8gY2hlY2sgaWYgaXQgaXMgZW1wdHkgb3Igbm90XG4gICAgICAgICAgICBpc0VtcHR5ID0gY2hlY2tFbXB0eU9iamVjdCh2YWx1ZSk7XG4gICAgICAgIH1cbiAgICAgICAgcmV0dXJuIGlzRW1wdHk7IC8vIGlzRW1wdHkgZmFsc2Ugd2lsbCBicmVhayB0aGUgbG9vcFxuICAgIH0pO1xuICAgIHJldHVybiBpc0VtcHR5O1xufTtcblxuZXhwb3J0IGNsYXNzIE1vZGVsVmFyaWFibGVNYW5hZ2VyIGV4dGVuZHMgQmFzZVZhcmlhYmxlTWFuYWdlciB7XG4gICAgLypcbiAgICAqIENhc2U6IGEgTElTVCB0eXBlIHN0YXRpYyB2YXJpYWJsZSBoYXZpbmcgb25seSBvbmUgb2JqZWN0XG4gICAgKiBhbmQgdGhlIG9iamVjdCBoYXMgYWxsIGZpZWxkcyBlbXB0eSwgcmVtb3ZlIHRoYXQgb2JqZWN0XG4gICAgKi9cbiAgICByZW1vdmVGaXJzdEVtcHR5T2JqZWN0KHZhcmlhYmxlKSB7XG4gICAgICAgIGlmIChfLmlzQXJyYXkodmFyaWFibGUuZGF0YVNldCkgJiYgdmFyaWFibGUuZGF0YVNldC5sZW5ndGggPT09IDEgJiYgY2hlY2tFbXB0eU9iamVjdCh2YXJpYWJsZS5kYXRhU2V0WzBdKSkge1xuICAgICAgICAgICAgdmFyaWFibGUuZGF0YVNldCA9IFtdO1xuICAgICAgICB9XG4gICAgfVxufVxuIl19

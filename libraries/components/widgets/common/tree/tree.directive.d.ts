@@ -1,0 +1,36 @@
+import { Injector } from '@angular/core';
+import { IRedrawableComponent } from '../../framework/types';
+import { StylableComponent } from '../base/stylable.component';
+export declare class TreeDirective extends StylableComponent implements IRedrawableComponent {
+    private binddatavalue;
+    private bindnodelabel;
+    private bindnodeicon;
+    private bindnodechildren;
+    private bindnodeid;
+    static initializeProps: void;
+    private _selectNode;
+    private nodes;
+    datavalue: string;
+    treeicons: string;
+    selecteditem: any;
+    nodeid: string;
+    nodeaction: string;
+    nodeclick: string;
+    nodelabel: string;
+    nodeicon: string;
+    nodechildren: string;
+    orderby: string;
+    constructor(inj: Injector, binddatavalue: any, bindnodelabel: any, bindnodeicon: any, bindnodechildren: any, bindnodeid: any);
+    onPropertyChange(key: string, nv: any, ov?: any): void;
+    private constructNodes;
+    private getNodesFromString;
+    private getNodes;
+    private changeTreeIcons;
+    private toggleExpandCollapseNode;
+    private renderTree;
+    private selectNode;
+    private bindEvents;
+    private selectById;
+    private deselectById;
+    redraw(): void;
+}

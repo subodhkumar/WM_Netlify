@@ -1,0 +1,31 @@
+import { Injector, OnInit } from '@angular/core';
+import { BaseComponent } from '../../base/base.component';
+import { FormComponent } from '../form.component';
+export declare class FormActionDirective extends BaseComponent implements OnInit {
+    form: FormComponent;
+    static initializeProps: void;
+    accessroles: any;
+    action: any;
+    binding: any;
+    class: any;
+    disabled: any;
+    displayName: any;
+    iconclass: any;
+    iconname: any;
+    key: any;
+    position: any;
+    shortcutkey: any;
+    show: any;
+    tabindex: any;
+    title: any;
+    type: any;
+    updateMode: any;
+    buttonDef: any;
+    hyperlink: any;
+    target: any;
+    private _propsInitialized;
+    constructor(inj: Injector, form: FormComponent);
+    populateAction(): void;
+    ngOnInit(): void;
+    onPropertyChange(key: any, nv: any, ov: any): void;
+}

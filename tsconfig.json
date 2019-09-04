@@ -1,0 +1,77 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "baseUrl": "./",
+        "outDir": "./dist/out-tsc",
+        "sourceMap": true,
+        "declaration": false,
+        "module": "es2015",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es5",
+        "typeRoots": [
+            "node_modules/@types"
+        ],
+        "lib": [
+            "es2018",
+            "dom"
+        ],
+        "paths": {
+            "@wm/build-task": [
+                "libraries/build-task/"
+            ],
+            "@wm/mobile-build-task": [
+                "libraries/mobile-build-task"
+            ],
+            "@wm/core": [
+                "libraries/core"
+            ],
+            "@wm/components": [
+                "libraries/components"
+            ],
+            "@wm/transpiler": [
+                "libraries/transpiler"
+            ],
+            "@wm/security": [
+                "libraries/security"
+            ],
+            "@swipey": [
+                "libraries/swipey"
+            ],
+            "@wm/http": [
+                "libraries/http"
+            ],
+            "@wm/oAuth": [
+                "libraries/oAuth"
+            ],
+            "@wm/variables": [
+                "libraries/variables"
+            ],
+            "@wm/mobile/core": [
+                "libraries/mobile/core"
+            ],
+            "@wm/mobile/components": [
+                "libraries/mobile/components"
+            ],
+            "@wm/mobile/offline": [
+                "libraries/mobile/offline"
+            ],
+            "@wm/mobile/variables": [
+                "libraries/mobile/variables"
+            ],
+            "@wm/runtime/base": [
+                "libraries/runtime/base"
+            ],
+            "@wm/runtime/dynamic": [
+                "libraries/runtime/dynamic"
+            ],
+            "@wm/mobile/runtime": [
+                "libraries/mobile/placeholder"
+            ],
+            "@wm/mobile/placeholder": [
+                "libraries/mobile/placeholder"
+            ]
+        }
+    }
+}

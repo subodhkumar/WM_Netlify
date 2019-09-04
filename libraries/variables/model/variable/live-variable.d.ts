@@ -1,0 +1,36 @@
+import { IDataSource } from '@wm/core';
+import { ApiAwareVariable } from './api-aware-variable';
+export declare class LiveVariable extends ApiAwareVariable implements IDataSource {
+    matchMode: any;
+    liveSource: any;
+    propertiesMap: any;
+    pagination: any;
+    type: any;
+    orderBy: any;
+    _options: any;
+    _observable: any;
+    constructor(variable: any);
+    execute(operation: any, options: any): any;
+    listRecords(options?: any, success?: any, error?: any): Promise<{}>;
+    updateRecord(options?: any, success?: any, error?: any): Promise<{}>;
+    insertRecord(options?: any, success?: any, error?: any): Promise<{}>;
+    deleteRecord(options?: any, success?: any, error?: any): Promise<{}>;
+    setInput(key: any, val: any, options: any): any;
+    setFilter(key: any, val: any): any;
+    download(options: any, success?: any, error?: any): Promise<{}>;
+    invoke(options?: any, success?: any, error?: any): Promise<{}>;
+    getRelatedTablePrimaryKeys(columnName: any): any;
+    getRelatedTableData(columnName: any, options: any, success?: any, error?: any): Promise<{}>;
+    getDistinctDataByFields(options: any, success?: any, error?: any): Promise<{}>;
+    getAggregatedData(options: any, success?: any, error?: any): Promise<{}>;
+    getPrimaryKey(): any;
+    searchRecords(options: any, success?: any, error?: any): Promise<{}>;
+    getRequestParams(options: any): any;
+    _downgradeInputData(data: any): any;
+    _upgradeInputData(response: any, data: any): any;
+    setOrderBy(expression: any): any;
+    update(options?: any, success?: any, error?: any): Promise<{}>;
+    createRecord(options?: any, success?: any, error?: any): Promise<{}>;
+    init(): void;
+    cancel(options?: any): void;
+}

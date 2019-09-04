@@ -1,0 +1,11 @@
+{
+  "name": "wm",
+  "version": "10.0.0",
+  "description": "All modules required for a wavemaker application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wavemaker",
+  "license": "MIT"
+}
