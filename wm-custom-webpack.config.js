@@ -29,3 +29,14 @@ module.exports = {
         }
     }
 }
+
+
+/*
+Ng Scripts 
+
+"src/styles.css",
+                            "src/assets/styles/css/wm-style.css",
+                            "src/assets/styles/css/wm-responsive.css",
+                            "src/assets/themes/material/style.css",
+                            "src/assets/app.css"
+*/
